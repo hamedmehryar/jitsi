@@ -32,6 +32,7 @@ import net.java.sip.communicator.impl.protocol.jabber.extensions.carbon.*;
 import net.java.sip.communicator.impl.protocol.jabber.extensions.coin.*;
 import net.java.sip.communicator.impl.protocol.jabber.extensions.colibri.*;
 import net.java.sip.communicator.impl.protocol.jabber.extensions.inputevt.*;
+import net.java.sip.communicator.impl.protocol.jabber.extensions.jibri.*;
 import net.java.sip.communicator.impl.protocol.jabber.extensions.jingle.*;
 import net.java.sip.communicator.impl.protocol.jabber.extensions.jingleinfo.*;
 import net.java.sip.communicator.impl.protocol.jabber.extensions.keepalive.*;
@@ -150,6 +151,14 @@ public class ProtocolProviderServiceJabberImpl
      * separation. Defined in XEP-0176
      */
     public static final String URN_IETF_RFC_3264 = "urn:ietf:rfc:3264";
+
+    /**
+     * http://xmpp.org/extensions/xep-0092.html Software Version.
+     *
+     */
+    // Used in JVB
+    @SuppressWarnings("unused")
+    public static final String URN_XMPP_IQ_VERSION = "jabber:iq:version";
 
     /**
      * Jingle's Discovery Info URN for "XEP-0294: Jingle RTP Header Extensions
@@ -1731,6 +1740,12 @@ public class ProtocolProviderServiceJabberImpl
                     ColibriConferenceIQ.ELEMENT_NAME,
                     ColibriConferenceIQ.NAMESPACE,
                     new ColibriIQProvider());
+
+            providerManager.addIQProvider(
+                    JibriIq.ELEMENT_NAME,
+                    JibriIq.NAMESPACE,
+                    new JibriIqProvider()
+            );
 
             providerManager.addExtensionProvider(
                     ConferenceDescriptionPacketExtension.ELEMENT_NAME,

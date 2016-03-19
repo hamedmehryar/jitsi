@@ -161,7 +161,7 @@ public class ColibriConferenceIQ
             throw new NullPointerException("channelBundle");
 
         return
-            channelBundles.contains(channelBundles)
+            channelBundles.contains(channelBundle)
                ? false
                : channelBundles.add(channelBundle);
     }
@@ -1077,8 +1077,8 @@ public class ColibriConferenceIQ
 
             if (adaptiveSimulcast != null)
             {
-                xml.append(' ').append(adaptiveSimulcast).append("='")
-                        .append(adaptiveSimulcast).append('\'');
+                xml.append(' ').append(ADAPTIVE_SIMULCAST_ATTR_NAME)
+                        .append("='").append(adaptiveSimulcast).append('\'');
             }
 
             // simulcastMode
